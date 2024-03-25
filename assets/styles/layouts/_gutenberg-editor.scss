@@ -1,0 +1,42 @@
+// This wrapping element is required.
+// Gutenberg will automatically rewrite the `body` selector to the editor's CSS class.
+body {
+  margin: 0;
+  font-family: $font-family-base;
+  font-size: $font-size-base;
+  font-weight: $font-weight-base;
+  line-height: $line-height-base;
+  color: $body-color;
+  text-align: left;
+  background-color: $body-bg;
+
+  // Fix post meta boxes overlapping editor
+  overflow-y: scroll;
+
+  .wp-block {
+    max-width: none;
+    @include media-breakpoint-up( sm ) { max-width: 100% * ( 10 / 12 ); }
+    @include media-breakpoint-up( lg ) { max-width: 100% * ( 8 / 12 ); }
+    @include media-breakpoint-up( xl ) { max-width: 100% * ( 6 / 12 ); }
+
+    &[data-align="wide"] {
+      max-width: none;
+      @include media-breakpoint-up( lg ) { max-width: 100% * ( 10 / 12 ); }
+      @include media-breakpoint-up( xl ) { max-width: 100% * ( 8 / 12 ); }
+    }
+
+    &[data-align="full"] {
+      max-width: none;
+    }
+  }
+
+  .editor-post-title__block {
+    .editor-post-title__input {
+      font-family: $headings-font-family;
+      font-weight: $headings-font-weight;
+      line-height: $headings-line-height;
+      color: $headings-color;
+    }
+  }
+}
+

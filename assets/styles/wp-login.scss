@@ -1,0 +1,127 @@
+@import "../../node_modules/bootstrap/scss/functions";
+@import "common/variables";
+@import "../../node_modules/bootstrap/scss/variables";
+@import "../../node_modules/bootstrap/scss/mixins";
+@import "../../node_modules/bootstrap/scss/utilities";
+
+body {
+	background: $light;
+	color: $body-color;
+	font-family: $font-family-base;
+	font-size: $font-size-base;
+	font-weight: $font-weight-base;
+	line-height: $line-height-base;
+}
+
+.login h1 a {
+	$logo-width: 200;
+	$logo-height: 200;
+	background-image: url("../images/wp-login-logo.svg");
+	width: 100%;
+	height: 0;
+	padding-top: calc(100% * (#{$logo-height} / #{$logo-width}));
+	background-size: contain;
+
+	// Niche logo overrides
+	height: 100px;
+	padding-top: 0;
+}
+
+// No need to edit anything below this point
+
+
+
+a {
+	color: $link-color;
+
+	@include hover {
+		color: $link-hover-color;
+	}
+
+	&:focus {
+		box-shadow: none;
+		outline: 2px solid $primary;
+	}
+}
+
+.wp-core-ui .button,
+.wp-core-ui .button-secondary {
+	@include button-outline-variant( $primary );
+}
+
+.wp-core-ui .button-primary {
+	@include button-variant( $primary, $primary );
+
+	&:focus {
+		background-color: darken( $primary, 7.5% );
+		border-color: darken( $primary, 10% );
+	}
+}
+
+.login .button.wp-hide-pw {
+	@include button-outline-variant( $primary, $primary, transparent, transparent );
+
+	&,
+	&:focus {
+		border-color: transparent;
+	}
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="color"]:focus,
+input[type="date"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="email"]:focus,
+input[type="month"]:focus,
+input[type="number"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="time"]:focus,
+input[type="url"]:focus,
+input[type="week"]:focus,
+input[type="checkbox"]:focus,
+input[type="radio"]:focus,
+select:focus,
+textarea:focus {
+	border-color: $primary;
+	box-shadow: 0 0 0 1px $primary;
+}
+
+input[type="checkbox"]:checked::before {
+	width: 0.7rem;
+	height: 0.7rem;
+	margin: 0.1rem;
+	content: str-replace( url("data:image/svg+xml;charset=utf8, %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='#{$primary}' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3E%3C/svg%3E"), "#", "%23" );
+}
+
+input[type="radio"]:checked::before {
+	background-color: $primary;
+}
+
+.login #nav a,
+.login #backtoblog a {
+	text-decoration: none;
+	color: desaturate( darken( $primary, 25% ), 50% );
+
+	&:hover {
+		color: desaturate( darken( $primary, 10% ), 10% );
+	}
+
+	&:focus {
+		color: desaturate( darken( $primary, 25% ), 10% );
+	}
+}
+
+.login .message {
+	border-left-color: $info;
+}
+
+.login .success {
+	border-left-color: $success;
+}
+
+.login #login_error {
+	border-left-color: $danger;
+}
